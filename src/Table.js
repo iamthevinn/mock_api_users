@@ -3,7 +3,7 @@ import './ui-toolkit/css/nm-cx/main.css';
 import './App.css';
 import { loadUsers } from './state/actions';
 import { connect } from 'react-redux'
-
+import { SELECT_USER, ADD_USER } from './state/actions.js'
 
 class Table extends Component {
 
@@ -28,7 +28,7 @@ class Table extends Component {
                 <tbody>
                     {this.props.users.map((user) =>
                         <tr key={user.id}>
-                            <td>{user.username}</td>
+                            <td onClick={() => this.props.selectUser(user)} >{user.username}</td>
                             <td>{user.email}</td>
                             <td>{user.createdAt}</td>
                             <td>stuff</td>
@@ -36,7 +36,7 @@ class Table extends Component {
                     }
                 </tbody>
             </table>
-            <button>Add a new User</button>
+            <button onClick={this.props.addNewUser}>Add a new User</button>
         </div>
     );
 }
@@ -51,7 +51,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loadUsersToState: () => dispatch(loadUsers())
+        loadUsersToState: () => dispatch(loadUsers()),
+        selectUser: (user) => dispatch({type: SELECT_USER, payload: user}),
+        addNewUser: (user) => dispatch({type: ADD_USER})
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Table);

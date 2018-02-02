@@ -4,6 +4,7 @@ import './App.css';
 import { loadUsers } from './state/actions';
 import { connect } from 'react-redux';
 import Table from './Table';
+import Detail from './Detail';
 
 class App extends Component {
 
