@@ -1,8 +1,10 @@
+import React, { Component } from 'react';
+import Table from '../Table';
 import { USER_FETCH_SUCCESS } from './actions'
 
 const initalState = {
     users: [],
-    pageToDisplay: "table"
+    currentPage: <Table />
 }
 function reducer(state = initalState, action) {
     console.log(state);
