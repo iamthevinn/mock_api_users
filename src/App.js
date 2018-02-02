@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import './ui-toolkit/css/nm-cx/main.css';
 import './App.css';
+import { loadUsers } from './state/actions';
+import { connect } from 'react-redux'
+
+const GET_USER_URL = 'https://5a747e5b61c2a40012894ab4.mockapi.io/api/v1/users'
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.loadUsersToState()
+  }
+
   render() {
     return (
       <div className="App">
@@ -18,24 +27,14 @@ class App extends Component {
                   </tr>
               </thead>
               <tbody>
-                  <tr>
-                      <td>Rent</td>
-                      <td>$1,480</td>
-                      <td>Monthly</td>
-                      <td>dummy</td>
-                  </tr>
-                  <tr>
-                      <td>Resident Service Fee</td>
-                      <td>$51</td>
-                      <td>Monthly</td>
-                      <td>dummy</td>
-                  </tr>
-                  <tr>
-                      <td>Cell Phone</td>
-                      <td>$90</td>
-                      <td>Monthly</td>
-                      <td>dummy</td>
-                  </tr>
+                {this.props.users.map((user) =>
+                  <tr key={user.id}>
+                      <td>{user.username}</td>
+                      <td>{user.email}</td>
+                      <td>{user.createdAt}</td>
+                      <td>stuff</td>
+                  </tr>)
+                }
               </tbody>
           </table>
           <button>Add a new User</button>
@@ -44,4 +43,16 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    users: state.users,
+    pageToDisplay: state.pageToDisplay
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadUsersToState: () => dispatch(loadUsers())
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(App);
