@@ -30,10 +30,14 @@ export function deleteUserFromList(userId){
   return (dispatch, getState, api) => {
   axios.delete('https://5a747e5b61c2a40012894ab4.mockapi.io/api/v1/users/' + userId)
     .then((response) => {
-      console.log("indeleteusers")
-      getUsers()
+
       dispatch({type: DELETE_USER, payload: response.data})
-      
+
+      axios.get('https://5a747e5b61c2a40012894ab4.mockapi.io/api/v1/users')
+      .then(({ data: users }) => {
+        console.log("in get users")
+        dispatch({type: USER_FETCH_SUCCESS, payload: users})
+      })
     }
     )
   }
