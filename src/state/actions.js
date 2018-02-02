@@ -1,0 +1,1 @@
+export const PAGE_LOADS = "PAGE_LOADS"
