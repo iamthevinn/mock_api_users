@@ -39,18 +39,18 @@ class EditUser extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div className="html, body">
                 <div className="card">
                     <h1>Edit User: {this.props.user.id}</h1>
-                    <div>First Name
-                <input name="firstName" value={this.state.firstName} onChange={this.handleChange} ></input>
+                    <div className="md-text-field">
+                <input name="firstName" type="text" placeholder="First Name"  value={this.state.firstName} onChange={this.handleChange} ></input>
                     </div>
-                    <div>Last Name
-                <input name="lastName" value={this.state.lastName} onChange={this.handleChange}></input>
+                    <div className="md-text-field">
+                <input name="lastName" type="text" placeholder="Last Name" value={this.state.lastName} onChange={this.handleChange}></input>
                     </div>
 
-                    <div>Email
-                <input name="eMail" value={this.state.eMail} onChange={this.handleChange}></input>
+                    <div className="md-text-field">
+                <input name="eMail" type="text" placeholder="email Address"  value={this.state.eMail} onChange={this.handleChange}></input>
                     </div>
 
                     <button className="button btn-cta" onClick={this.updateUser}>Update</button>
