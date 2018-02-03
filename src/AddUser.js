@@ -39,7 +39,7 @@ class AddUser extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div className="row padding-vert-large padding-horiz-xlarge" >
                 <div className="card">
                     <h1>Add a New User </h1>
                     <div>First Name

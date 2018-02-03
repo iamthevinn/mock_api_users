@@ -23,7 +23,7 @@ class Table extends Component {
  
   render() {
     return (
-        <div className="App">
+        <div className="row padding-vert-large padding-horiz-xlarge" >
             <h1>Users</h1>
             <table className="table" summary="This summary is for screen readers and should summarize the structure of the table headers and rows">
                 <caption className="show-for-sr">Basic Table</caption>
@@ -40,7 +40,7 @@ class Table extends Component {
                         <tr key={user.id}>
                             <td onClick={() => this.props.selectUser(user)} >{user.username}</td>
                             <td>{user.email}</td>
-                            <td>{user.createdAt}</td>
+                            <td>{Date(user.createdAt*1000).toLocaleString('en-US', { timeZoneName: 'short' })}</td>
                             <td>
                                 <div onClick={() => this.props.selectUser(user)}>Show</div>
                                 <div onClick={() => this.props.editUser(user)}>Edit</div>

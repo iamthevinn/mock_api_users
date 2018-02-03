@@ -39,7 +39,7 @@ class EditUser extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div className="row padding-vert-large padding-horiz-xlarge" >
                 <div className="card">
                     <h1>Edit User: {this.props.user.id}</h1>
                     <div>First Name

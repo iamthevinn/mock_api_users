@@ -22,11 +22,11 @@ class Detail extends Component {
 
   render() {
     return (
-        <div className="App">
+        <div className="row padding-vert-large padding-horiz-xlarge" >
             <h1>User ID: {this.props.user.id} </h1>
             <div>Full Name {this.props.user.username}</div>
             <div>Email {this.props.user.email}</div>
-            <div>Created At {this.props.user.createdAt}</div>
+            <div>Created At {Date(this.props.user.createdAt*1000)}</div>
             <button onClick={() => this.props.editUser(this.props.user)}>Edit</button>
             <button onClick={() => this.props.deleteUser(this.props.user.id)}>Delete</button>
         </div>
