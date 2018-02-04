@@ -1,38 +1,27 @@
 import React, { Component } from 'react';
 import './ui-toolkit/css/nm-cx/main.css';
-import './App.css';
 import { deleteUserFromList, loadUsers, SHOW_TABLE, EDIT_USER } from './state/actions';
 import { connect } from 'react-redux'
-import axios from 'axios';
-
 
 class Detail extends Component {
-    constructor(props) {
-        super(props);
-        //this.deleteUserFromList = this.deleteUserFromList.bind(this)
+
+    render() {
+        return (
+            <div className="row padding-vert-large padding-horiz-xlarge" >
+                <div className="card">
+                    <h1>User ID: {this.props.user.id} </h1>
+                    <div><b>Full Name: </b>{this.props.user.username}</div>
+                    <div><b>Email: </b>{this.props.user.email}</div>
+                    <div><b>Created At: </b>{new Date(this.props.user.createdAt * 1000).toLocaleString('en-US')}</div>
+                </div>
+                <div className="row padding-vert-large padding-horiz-large">
+                    <button className="button btn-cta small" onClick={() => this.props.editUser(this.props.user)}>Edit</button>
+                    <button className="button btn-cta small" onClick={() => this.props.deleteUser(this.props.user.id)}>Delete</button>
+                    <button className="button btn-cta tertiary right small" onClick={this.props.backToTable} >Go Back</button>
+                </div>
+            </div>
+        );
     }
-
-    // deleteUserFromList(){
-    // //   axios.delete('https://5a747e5b61c2a40012894ab4.mockapi.io/api/v1/users/' + this.props.user.id)
-    // //     .then((response) => {
-    // //       this.props.backToTable()
-    // //     }
-    // //     )
-    // }
-
-  render() {
-    return (
-        <div className="row padding-vert-large padding-horiz-xlarge" >
-            <h1>User ID: {this.props.user.id} </h1>
-            <div>Full Name {this.props.user.username}</div>
-            <div>Email {this.props.user.email}</div>
-            <div>Created At {Date(this.props.user.createdAt*1000)}</div>
-            <button onClick={() => this.props.editUser(this.props.user)}>Edit</button>
-            <button onClick={() => this.props.deleteUser(this.props.user.id)}>Delete</button>
-        </div>
-    );
-}
-
 }
 
 const mapStateToProps = (state) => {
@@ -43,10 +32,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteUser: (userId) => dispatch (deleteUserFromList(userId)),
+        deleteUser: (userId) => dispatch(deleteUserFromList(userId)),
         loadUsersToState: () => dispatch(loadUsers()),
-        backToTable: () => dispatch({type: SHOW_TABLE}),
-        editUser: (user) => dispatch({type: EDIT_USER, payload: user}),
+        backToTable: () => dispatch({ type: SHOW_TABLE }),
+        editUser: (user) => dispatch({ type: EDIT_USER, payload: user }),
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Detail);

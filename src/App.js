@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './ui-toolkit/css/nm-cx/main.css';
-import './App.css';
 import { loadUsers } from './state/actions';
 import { connect } from 'react-redux';
 import Table from './Table';
 import Detail from './Detail';
+import AddUser from './AddUser';
+import EditUser from './EditUser';
 
 class App extends Component {
 
