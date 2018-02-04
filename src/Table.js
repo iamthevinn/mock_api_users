@@ -37,20 +37,24 @@ class Table extends Component {
                     <tbody height="500" >
                         {this.props.users.map((user) =>
                             <tr key={user.id}>
-                                <td style={{ cursor: "pointer" }} onClick={() => this.props.selectUser(user)} >{user.username}</td>
+                                <td style={{ cursor: "pointer" }} onClick={() => this.props.selectUser(user)} ><a>{user.username}</a></td>
                                 <td>{user.email}</td>
                                 <td>{new Date(user.createdAt * 1000).toLocaleString('en-US')}</td>
                                 <td className="heading-nav">
-                                    <div className="heading-nav-entry" style={{ cursor: "pointer" }} onClick={() => this.props.selectUser(user)}>Show</div>
-                                    <div className="heading-nav-entry" style={{ cursor: "pointer" }} onClick={() => this.props.editUser(user)}>Edit</div>
-                                    <div className="heading-nav-entry" style={{ cursor: "pointer" }} onClick={() => this.deleteFromTable(user.id)}>Delete</div>
+                                    <div className="heading-nav-entry" style={{ cursor: "pointer" }} onClick={() => this.props.selectUser(user)}><a>Show</a></div>
+                                    <div className="heading-nav-entry" style={{ cursor: "pointer" }} onClick={() => this.props.editUser(user)}><a>Edit</a></div>
+                                    <div className="heading-nav-entry" style={{ cursor: "pointer" }} onClick={() => this.deleteFromTable(user.id)}><a>Delete</a></div>
                                 </td>
                             </tr>)
                         }
                     </tbody>
                 </table>
-                <div className="row padding-vert-small padding-horiz-large">
-                    <button onClick={this.props.addNewUser}>Add a new User</button>
+                <div className="row padding-vert-small padding-horiz-medium">
+                    <ul className="filter-nav">
+                        <li className="filter-nav-entry">
+                            <button onClick={this.props.addNewUser}>Add a new User</button>
+                        </li>
+                    </ul>
                 </div>
             </div>
         );

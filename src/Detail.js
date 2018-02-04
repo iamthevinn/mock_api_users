@@ -10,14 +10,31 @@ class Detail extends Component {
             <div className="row padding-vert-large padding-horiz-xlarge" >
                 <div className="card">
                     <h1>User ID: {this.props.user.id} </h1>
-                    <div><b>Full Name: </b>{this.props.user.username}</div>
-                    <div><b>Email: </b>{this.props.user.email}</div>
-                    <div><b>Created At: </b>{new Date(this.props.user.createdAt * 1000).toLocaleString('en-US')}</div>
+                    <div className="row">
+                        <div className="small-2 columns" ><h5>Full Name: </h5></div>
+                        <div className="small-10 columns" >{this.props.user.username}</div>
+                    </div>
+                    <div className="row">
+                        <div className="small-2 columns" ><h5>Email: </h5></div>
+                        <div className="small-10 columns" >{this.props.user.email}</div>
+                    </div>
+                    <div className="row">
+                        <div className="small-2 columns" ><h5>Created : </h5></div>
+                        <div className="small-10 columns" >{new Date(this.props.user.createdAt * 1000).toLocaleString('en-US')}</div>
+                    </div>
                 </div>
-                <div className="row padding-vert-large padding-horiz-large">
-                    <button className="button btn-cta small" onClick={() => this.props.editUser(this.props.user)}>Edit</button>
-                    <button className="button btn-cta small" onClick={() => this.props.deleteUser(this.props.user.id)}>Delete</button>
-                    <button className="button btn-cta tertiary right small" onClick={this.props.backToTable} >Go Back</button>
+                <div className="row padding-vert-small padding-horiz-medium">
+                    <ul className="filter-nav">
+                        <li className="filter-nav-entry">
+                            <button onClick={() => this.props.editUser(this.props.user)}>Edit</button>
+                        </li>
+                        <li className="filter-nav-entry">
+                            <button onClick={() => this.props.deleteUser(this.props.user.id)}>Delete</button>
+                        </li>
+                        <li className="filter-nav-entry">
+                            <button onClick={this.props.backToTable} >Go Back</button>
+                        </li>
+                    </ul>
                 </div>
             </div>
         );

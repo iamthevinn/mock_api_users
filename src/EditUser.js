@@ -40,22 +40,38 @@ class EditUser extends Component {
     render() {
         return (
             <div className="row padding-vert-large padding-horiz-xlarge" >
-                <div className="card">
-                    <h1>Edit User: {this.props.user.id}</h1>
-                    <div>First Name
-                <input name="firstName" value={this.state.firstName} onChange={this.handleChange} ></input>
+                <h1>Edit User: {this.props.user.id}</h1>
+                <form>
+                    <div className="row">
+                        <div className="small-12 columns md-text-field with-floating-label icon-left" >
+                            <input type="text" id="input_1" tabIndex="1" name="firstName" value={this.state.firstName} onChange={this.handleChange} required />
+                            <label htmlFor="input_1">First Name</label>
+                            <span className="icon icon-sysicon-edit" />
+                        </div>
+                        <div className="small-12 columns md-text-field with-floating-label icon-left" >
+                            <input type="text" id="input_2" tabIndex="2" name="lastName" value={this.state.lastName} onChange={this.handleChange} required />
+                            <label htmlFor="input_2">Last Name</label>
+                            <span className="icon icon-sysicon-edit" />
+                        </div>
+                        <div className="small-12 columns md-text-field with-floating-label icon-left" >
+                            <input type="text" id="input_3" tabIndex="3" name="eMail" value={this.state.eMail} onChange={this.handleChange} required />
+                            <label htmlFor="input_3">Email</label>
+                            <span className="icon icon-sysicon-edit" />
+                        </div>
                     </div>
-                    <div>Last Name
-                <input name="lastName" value={this.state.lastName} onChange={this.handleChange}></input>
-                    </div>
-                    <div>Email
-                <input name="eMail" value={this.state.eMail} onChange={this.handleChange}></input>
-                    </div>
-                </div>
-                <div className="row padding-vert-large padding-horiz-large">
+                </form>
+                <div className="row padding-vert-small padding-horiz-medium">
                     <button className="button btn-cta small" onClick={this.updateUser}>Update</button>
-                    <button className="button btn-cta small" onClick={() => this.props.showUser(this.props.user)}>Show</button>
-                    <button className="button btn-cta tertiary small right" onClick={this.props.backToTable} >Go Back</button>
+                </div>
+                <div className="row padding-vert-small padding-horiz-medium">
+                    <ul className="filter-nav">
+                        <li className="filter-nav-entry">
+                            <button onClick={() => this.props.showUser(this.props.user)}>Show</button>
+                        </li>
+                        <li className="filter-nav-entry">
+                            <button onClick={this.props.backToTable} >Go Back</button>
+                        </li>
+                     </ul>
                 </div>
             </div>
         );

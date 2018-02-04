@@ -24,10 +24,8 @@ class AddUser extends Component {
             username: this.state.firstName + " " + this.state.lastName,
             email: this.state.eMail,
         }
-        console.log(userObj);
-        axios.post('https://5a747e5b61c2a40012894ab4.mockapi.io/api/v1/users', userObj)
+        axios.post('http://5a747e5b61c2a40012894ab4.mockapi.io/api/v1/users', userObj)
             .then((response) => {
-                console.log(response.data)
                 this.props.backToTable()
             }
             )
@@ -60,11 +58,17 @@ class AddUser extends Component {
                             <span className="icon icon-sysicon-email_1" />
                         </div>
                     </div>
-                    <div className="row">
-                        <button className="button btn-cta small left" onClick={this.addUsertoList}>Create</button>
-                        <button className="button btn-cta tertiary small right" onClick={this.props.backToTable} >Go Back</button>
-                    </div>
                 </form>
+                <div className="row padding-vert-small padding-horiz-medium">
+                     <button className="button btn-cta small" onClick={this.addUsertoList}>Create</button>
+                </div>
+                <div className="row padding-vert-small padding-horiz-medium">
+                    <ul className="filter-nav">
+                        <li className="filter-nav-entry">
+                            <button onClick={this.props.backToTable} >Go Back</button>
+                        </li>
+                    </ul>
+                </div>
             </div>
         );
     }
