@@ -48,7 +48,6 @@ class EditUser extends Component {
                     <div>Last Name
                 <input name="lastName" value={this.state.lastName} onChange={this.handleChange}></input>
                     </div>
-
                     <div>Email
                 <input name="eMail" value={this.state.eMail} onChange={this.handleChange}></input>
                     </div>
