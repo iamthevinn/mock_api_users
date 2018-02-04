@@ -22,13 +22,16 @@ class Detail extends Component {
 
   render() {
     return (
-        <div className="App">
-            <h1>User ID: {this.props.user.id} </h1>
-            <div>Full Name {this.props.user.username}</div>
-            <div>Email {this.props.user.email}</div>
-            <div>Created At {this.props.user.createdAt}</div>
-            <button onClick={() => this.props.editUser(this.props.user)}>Edit</button>
-            <button onClick={() => this.props.deleteUser(this.props.user.id)}>Delete</button>
+        <div className="html, body">
+            <div className="card">
+                <h3>User ID: {this.props.user.id} </h3>
+                <div>Full Name {this.props.user.username}</div>
+                <div>Email {this.props.user.email}</div>
+                {console.log(this.d)}
+                <div>Created At {this.props.user.createdAt}</div>
+                <button class="button btn-cta" onClick={() => this.props.editUser(this.props.user)}>Edit</button>
+                <button className="button btn-cta tertiary" onClick={() => this.props.deleteUser(this.props.user.id)}>Delete</button>
+            </div>
         </div>
     );
 }
